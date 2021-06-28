@@ -1004,18 +1004,15 @@ bool RouteSync::getIfName(int if_index, char *if_name, size_t name_len)
     return true;
 }
 
-#ifndef LIBNL3_ENCAP_MPLS
 /* Thise stub is needed for sonic-swss Azure pipeline, since encap_mpls
  * accessor is not yet upstreamed to external libnl3 project and sonic-swss
  * uses released version of libnl3 rather than customized version available
  * in sonic-buildimage.
  */
-static
 struct nl_addr *rtnl_route_nh_get_encap_mpls_dst(struct rtnl_nexthop *nh)
 {
     return NULL;
 }
-#endif // LIBNL3_ENCAP_MPLS
 
 /*
  * getNextHopList() - parses next hop list attached to route_obj
